@@ -1,0 +1,29 @@
+=================================================================
+HASIL EKSTRAKSI INFORMASI RULE-BASED (PENGADILAN NEGERI BLITAR)
+Dokumen Asal: putusan_62_pid.b_2026_pn_blt_20261001014143.txt
+=================================================================
+
+Nomor Putusan   : 62/Pid.B/2026/PN Blt
+
+--- IDENTITAS TERDAKWA ---
+Nama Terdakwa 1 : Irwanto
+Nama Terdakwa 2 : 
+Nama Terdakwa 3 : 
+
+--- TUNTUTAN JAKSA PENUNTUT UMUM ---
+Tindak Pidana   : pencurian dalam keadaan memberatkan
+Melanggar Pasal : Pasal 477 ayat (1) huruf g KUHP
+Tuntutan Hukuman: 3 (Tiga) Tahun dan 6 (Enam) Bulan3 (tiga) Tahun dan 6 (enam) 3
+
+--- PUTUSAN / VONIS MAJELIS HAKIM ---
+Tindak Pidana   : pencurian dalam keadaan yang
+Amar Putusan    : 3 (tiga) tahun
+
+--- APARATUR PERSIDANGAN ---
+Tanggal Putusan : 15 April 2026
+Hakim Ketua     : Agus Darmanto, S.H., M.H
+Hakim Anggota 1 : Raden Rajendra Mohni Iswoyokusumo, S.H., M.H
+Hakim Anggota 2 : Abraham Yoseph Titapasanea, S.H., M.H
+Panitera        : Sukri Safar, S.H
+Penuntut Umum   : Dwi Budi Setiari, S.H., M.H
+=================================================================

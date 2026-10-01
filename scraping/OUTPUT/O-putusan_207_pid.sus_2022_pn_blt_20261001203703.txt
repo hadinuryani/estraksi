@@ -1,0 +1,29 @@
+=================================================================
+HASIL EKSTRAKSI INFORMASI RULE-BASED (PENGADILAN NEGERI BLITAR)
+Dokumen Asal: putusan_207_pid.sus_2022_pn_blt_20261001203703.txt
+=================================================================
+
+Nomor Putusan   : 207/Pid.Sus/2022/PN Blt
+
+--- IDENTITAS TERDAKWA ---
+Nama Terdakwa 1 : Kateni Bin Alm Jaimin
+Nama Terdakwa 2 : 
+Nama Terdakwa 3 : 
+
+--- TUNTUTAN JAKSA PENUNTUT UMUM ---
+Tindak Pidana   : menganiaya dan/atau
+Melanggar Pasal : Pasal 91 B ayat (1) jo Pasal 66 A ayat (1) UU RI No
+Tuntutan Hukuman: 4 (empat) Bulan dan
+
+--- PUTUSAN / VONIS MAJELIS HAKIM ---
+Tindak Pidana   : PENGANIAYAAN
+Amar Putusan    : 4 (empat) Bulan dan denda sebesar Rp 3
+
+--- APARATUR PERSIDANGAN ---
+Tanggal Putusan : 29 Agustus 2022
+Hakim Ketua     : Dr. Wisnu Widiastuti, S.H.,, M.H.um
+Hakim Anggota 1 : Sugiri Wiryandono, S.H., M.Hum
+Hakim Anggota 2 : Doni Prianto, S.H
+Panitera        : Sutris Utami, S.H
+Penuntut Umum   : Bambang Suparyanto.,S.H
+=================================================================

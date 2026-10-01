@@ -1,0 +1,29 @@
+=================================================================
+HASIL EKSTRAKSI INFORMASI RULE-BASED (PENGADILAN NEGERI BLITAR)
+Dokumen Asal: putusan_32_pid.b_2026_pn_blt_20261001202728.txt
+=================================================================
+
+Nomor Putusan   : 32/Pid.B/2026/PN Blt
+
+--- IDENTITAS TERDAKWA ---
+Nama Terdakwa 1 : Sholikhin Alias Likok Bin Ginar
+Nama Terdakwa 2 : 
+Nama Terdakwa 3 : 
+
+--- TUNTUTAN JAKSA PENUNTUT UMUM ---
+Tindak Pidana   : melakukan penganiayaan
+Melanggar Pasal : 
+Tuntutan Hukuman: 10 (sepuluh) bulan
+
+--- PUTUSAN / VONIS MAJELIS HAKIM ---
+Tindak Pidana   : melakukan
+Amar Putusan    : 10 (sepuluh) bulan
+
+--- APARATUR PERSIDANGAN ---
+Tanggal Putusan : 16 April 2026
+Hakim Ketua     : Agus Darmanto, S.H., M.H
+Hakim Anggota 1 : Raden Rajendra Mohni Iswoyokusumo, S.H., M.H
+Hakim Anggota 2 : Abraham Yoseph Titapasanea, S.H., M.H
+Panitera        : H. Mukhayani, S.H., M.H
+Penuntut Umum   : Ainur Rofiq, S.H
+=================================================================
