@@ -1,29 +1,19 @@
-=================================================================
-HASIL EKSTRAKSI INFORMASI RULE-BASED (PENGADILAN NEGERI BLITAR)
-Dokumen Asal: putusan_313_pid.c_2020_pn_blt_20261001203239.txt
-=================================================================
+============================================================
+HASIL EKSTRAKSI ENTITAS: putusan_313_pid.c_2020_pn_blt_20261001203239.txt
+============================================================
 
-Nomor Putusan   : 313/Pid.C/2020/PN Blt
-
---- IDENTITAS TERDAKWA ---
-Nama Terdakwa 1 : Suwito
-Nama Terdakwa 2 : 
-Nama Terdakwa 3 : 
-
---- TUNTUTAN JAKSA PENUNTUT UMUM ---
-Tindak Pidana   : mabuk ditempat umum dan mengganggu
-Melanggar Pasal : Pasal 492 Ayat 1 KUHP
-Tuntutan Hukuman: 
-
---- PUTUSAN / VONIS MAJELIS HAKIM ---
-Tindak Pidana   : mabuk ditempat umum dan mengganggu
-Amar Putusan    : 5 (lima) hari
-
---- APARATUR PERSIDANGAN ---
-Tanggal Putusan : 14 Pebruari 2020
-Hakim Ketua     : SUCI ASTRI PRAMAWATI, S.H., M.HUM
-Hakim Anggota 1 : 
-Hakim Anggota 2 : 
-Panitera        : SUTRIS UTAMI, S.H
-Penuntut Umum   : 
-=================================================================
+Nomor Putusan        : 313/Pid.C/2020/PN Blt
+Nama Terdakwa 1      : Suwito
+Nama Terdakwa 2      : 
+Nama Terdakwa 3      : 
+Tuntutan Pidana      : mabuk ditempat umum dan mengganggu
+Tuntutan KUHP        : Pasal 492 Ayat 1 KUHP
+Tuntukan Hukuman     : 
+Putusan Pidana       : mabuk ditempat umum dan mengganggu
+Putusan Hukuman      : 5 (lima) hari
+Tanggal Putusan      : 14 Pebruari 2020
+Hakim Ketua          : SUCI ASTRI PRAMAWATI, S.H., M.HUM
+Hakim Anggota1       : 
+Hakim Anggota2       : 
+Panitera             : SUTRIS UTAMI, S.H
+Penuntut Umum        : 

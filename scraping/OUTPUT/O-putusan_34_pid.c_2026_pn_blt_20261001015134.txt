@@ -1,29 +1,19 @@
-=================================================================
-HASIL EKSTRAKSI INFORMASI RULE-BASED (PENGADILAN NEGERI BLITAR)
-Dokumen Asal: putusan_34_pid.c_2026_pn_blt_20261001015134.txt
-=================================================================
+============================================================
+HASIL EKSTRAKSI ENTITAS: putusan_34_pid.c_2026_pn_blt_20261001015134.txt
+============================================================
 
-Nomor Putusan   : 34/Pid.C/2026/PN Blt
-
---- IDENTITAS TERDAKWA ---
-Nama Terdakwa 1 : LANANG TRI ARDIANSYAH
-Nama Terdakwa 2 : 
-Nama Terdakwa 3 : 
-
---- TUNTUTAN JAKSA PENUNTUT UMUM ---
-Tindak Pidana   : mabuk di
-Melanggar Pasal : Pasal 316 KUHP
-Tuntutan Hukuman: 
-
---- PUTUSAN / VONIS MAJELIS HAKIM ---
-Tindak Pidana   : mabuk di
-Amar Putusan    : Rp200
-
---- APARATUR PERSIDANGAN ---
-Tanggal Putusan : 24 April 2026
-Hakim Ketua     : Taufiq Noor Hayat, S.H
-Hakim Anggota 1 : 
-Hakim Anggota 2 : 
-Panitera        : Gita Permana Santoso, S.Kom., S.H
-Penuntut Umum   : 
-=================================================================
+Nomor Putusan        : 34/Pid.C/2026/PN Blt
+Nama Terdakwa 1      : LANANG TRI ARDIANSYAH
+Nama Terdakwa 2      : 
+Nama Terdakwa 3      : 
+Tuntutan Pidana      : mabuk di
+Tuntutan KUHP        : Pasal 316 KUHP
+Tuntukan Hukuman     : 
+Putusan Pidana       : mabuk di
+Putusan Hukuman      : Rp200
+Tanggal Putusan      : 24 April 2026
+Hakim Ketua          : Taufiq Noor Hayat, S.H
+Hakim Anggota1       : 
+Hakim Anggota2       : 
+Panitera             : Gita Permana Santoso, S.Kom., S.H
+Penuntut Umum        : 

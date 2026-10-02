@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8857a59b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7804,69 +7804,37 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="TUGAS-02---EKSTRAKSI-INFORMASI">TUGAS 02 - EKSTRAKSI INFORMASI<a class="anchor-link" href="#TUGAS-02---EKSTRAKSI-INFORMASI">¶</a></h1><h2 id="Uji-Coba-Rule-Based-Information-Extraction-Sederhana">Uji Coba Rule-Based Information Extraction Sederhana<a class="anchor-link" href="#Uji-Coba-Rule-Based-Information-Extraction-Sederhana">¶</a></h2><p><strong>Identitas Mahasiswa:</strong></p>
 <ul>
-<li><strong>NIM:</strong> 240411100135</li>
-<li><strong>Mata Kuliah:</strong> Ekstraksi Informasi</li>
-<li><strong>Objek Kajian:</strong> Dokumen Putusan Pengadilan Negeri Blitar (PN Blitar)</li>
-</ul>
-<hr/>
-<h3 id="Deskripsi-Tugas:">Deskripsi Tugas:<a class="anchor-link" href="#Deskripsi-Tugas:">¶</a></h3><ol>
-<li>Melakukan konversi dokumen putusan pengadilan format <strong>PDF</strong> hasil scraping tugas sebelumnya menjadi format teks (<strong>TXT</strong>).</li>
-<li>Membangun dan menguji sistem ekstraksi informasi berbasis aturan (<strong>Rule-Based Information Extraction</strong>) menggunakan Python dan Regular Expression (<code>re</code>).</li>
-<li>Mengekstrak entitas-entitas penting dari minimal 5 dokumen putusan perkara pidana:<ul>
-<li><strong>Nomor Putusan</strong></li>
-<li><strong>Nama Terdakwa</strong> (Terdakwa 1, 2, 3)</li>
-<li><strong>Tuntutan Jaksa Penuntut Umum</strong> (Tindak Pidana, Pasal KUHP/UU yang dilanggar, Lama Tuntutan Hukuman)</li>
-<li><strong>Putusan / Vonis Majelis Hakim</strong> (Tindak Pidana Terbukti, Amar Putusan Hukuman Penjara/Denda)</li>
-<li><strong>Aparatur Persidangan</strong> (Tanggal Putusan, Hakim Ketua, Hakim Anggota 1, Hakim Anggota 2, Panitera Pengganti, Jaksa Penuntut Umum)</li>
-</ul>
-</li>
-<li>Menyimpan output ekstraksi ke format teks individual (<code>OUTPUT/O-[namafile].txt</code>) dan format tabel (<code>courtHistory.csv</code>).</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-Import-Library-yang-Dibutuhkan">1. Import Library yang Dibutuhkan<a class="anchor-link" href="#1.-Import-Library-yang-Dibutuhkan">¶</a></h2><p>Tahap pertama adalah memuat seluruh pustaka Python yang diperlukan:</p>
-<ul>
-<li><code>fitz</code> (<code>PyMuPDF</code>): Digunakan untuk membaca dan mengekstrak teks dari dokumen PDF putusan pengadilan secara cepat dan akurat.</li>
-<li><code>os</code>: Digunakan untuk manipulasi path folder input/output dan membaca daftar file.</li>
-<li><code>re</code>: Modul Regular Expression sebagai mesin utama dalam pencocokan pola aturan teks (<em>rule-based pattern matching</em>).</li>
-<li><code>csv</code>: Modul untuk membaca dan menulis hasil ekstraksi ke file CSV berbentuk tabel.</li>
-<li><code>pandas</code>: Digunakan untuk menyajikan tabel hasil ekstraksi secara rapi dan terstruktur.</li>
+<li>Nama: Ahmad Hadi Nuryani</li>
+<li>NIM: 240411100135</li>
+<li>Objek: Putusan Pengadilan Negeri Blitar (PN Blitar)</li>
 </ul>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=663eb6ed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import modul standar Python untuk manajemen file dan sistem operasi</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import modul os untuk manajemen folder dan membaca daftar file di sistem operasi</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="c1"># Import pustaka Regular Expression untuk pencocokan pola aturan teks (Rule-Based IE)</span>
+<span class="c1"># Import modul re (Regular Expression) sebagai mesin utama pencocokan pola aturan teks (Rule-Based IE)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="c1"># Import pustaka CSV untuk mengekspor data tabel hasil ekstraksi</span>
+<span class="c1"># Import modul csv untuk menyimpan data hasil ekstraksi ke file CSV berbentuk tabel</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 
-<span class="c1"># Import PyMuPDF (fitz) untuk ekstraksi teks dari dokumen PDF</span>
+<span class="c1"># Import PyMuPDF (fitz) untuk membaca dan mengekstrak isi teks dari file dokumen PDF</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">fitz</span>
 
-<span class="c1"># Import pandas untuk visualisasi dan verifikasi data hasil ekstraksi</span>
+<span class="c1"># Import pandas untuk menampilkan tabel hasil ekstraksi secara rapi di notebook</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Seluruh library berhasil dimuat dengan sukses!"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Semua library berhasil dimuat dengan sukses!"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7879,72 +7847,80 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Seluruh library berhasil dimuat dengan sukses!
+<pre>Semua library berhasil dimuat dengan sukses!
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc51b551">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Konversi-Dokumen-Putusan-dari-PDF-ke-Teks-(TXT)">2. Konversi Dokumen Putusan dari PDF ke Teks (TXT)<a class="anchor-link" href="#2.-Konversi-Dokumen-Putusan-dari-PDF-ke-Teks-(TXT)">¶</a></h2><p>Sesuai arahan tugas, dokumen putusan pengadilan yang sebelumnya diunduh dalam bentuk file <code>.pdf</code> dari Direktori Putusan Mahkamah Agung (PN Blitar) dikonversi menjadi file teks mentah <code>.txt</code>.</p>
-<p>Fungsi <code>convert_pdf_to_txt</code> membaca seluruh halaman dokumen PDF halaman per halaman, mengambil konten teksnya, lalu menyimpannya ke folder <code>./INPUT_TXT/</code>.</p>
+<h2 id="2.-Konversi-Dokumen-Putusan-dari-PDF-ke-Teks-(TXT)">2. Konversi Dokumen Putusan dari PDF ke Teks (TXT)<a class="anchor-link" href="#2.-Konversi-Dokumen-Putusan-dari-PDF-ke-Teks-(TXT)">¶</a></h2><p>Tahap ini bertujuan untuk mengonversi 5 dokumen putusan pengadilan format PDF dari PN Blitar menjadi file teks mentah (<code>.txt</code>).
+Proses ekstraksi teks per halaman menggunakan pustaka <code>PyMuPDF</code> (<code>fitz</code>) agar format teks asli di dalam berkas putusan tetap terjaga.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=45342291">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_pdf_to_txt</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">txt_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Fungsi untuk mengonversi satu file PDF menjadi file teks mentah (.txt).</span>
+<span class="sd">    Fungsi untuk mengonversi satu file dokumen PDF menjadi file teks mentah (.txt).</span>
 <span class="sd">    Parameter:</span>
-<span class="sd">      - pdf_path : Path lengkap file PDF asal</span>
-<span class="sd">      - txt_path : Path tujuan penyimpanan file TXT</span>
+<span class="sd">      - pdf_path : Path lengkap lokasi file PDF yang akan dibaca</span>
+<span class="sd">      - txt_path : Path tujuan tempat menyimpan file TXT hasil konversi</span>
 <span class="sd">    """</span>
-    <span class="c1"># Buka dokumen PDF menggunakan engine PyMuPDF</span>
+    <span class="c1"># Membuka dokumen PDF menggunakan library fitz (PyMuPDF)</span>
     <span class="n">doc</span> <span class="o">=</span> <span class="n">fitz</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
     <span class="n">full_text</span> <span class="o">=</span> <span class="p">[]</span>
     
-    <span class="c1"># Ekstraksi teks dari setiap halaman PDF secara berurutan</span>
+    <span class="c1"># Looping membaca isi teks dari setiap halaman PDF secara berurutan</span>
     <span class="k">for</span> <span class="n">page_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">)):</span>
         <span class="n">page</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="n">page_num</span><span class="p">]</span>
         <span class="n">full_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">get_text</span><span class="p">())</span>
     <span class="n">doc</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     
-    <span class="c1"># Simpan seluruh teks yang tergabung ke file TXT dengan encoding UTF-8</span>
+    <span class="c1"># Menggabungkan seluruh teks halaman dan menyimpannya ke file TXT (encoding UTF-8)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">txt_path</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_text</span><span class="p">))</span>
         
     <span class="k">return</span> <span class="n">txt_path</span>
 
-<span class="c1"># Inisialisasi direktori folder input PDF dan output teks TXT</span>
+
+<span class="c1"># --- Eksekusi Batch Konversi 5 Dokumen Putusan PN Blitar ---</span>
+
+<span class="c1"># Menentukan folder sumber PDF dan folder tujuan TXT</span>
 <span class="n">folder_pdf</span> <span class="o">=</span> <span class="s2">"./INPUT_PDF/"</span>
 <span class="n">folder_txt</span> <span class="o">=</span> <span class="s2">"./INPUT_TXT/"</span>
 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">folder_txt</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Ambil seluruh file PDF yang ada pada folder INPUT_PDF</span>
+<span class="c1"># Mengambil daftar seluruh file PDF di folder INPUT_PDF</span>
 <span class="n">daftar_file_pdf</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_pdf</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.pdf'</span><span class="p">)])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Memulai proses konversi </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daftar_file_pdf</span><span class="p">)</span><span class="si">}</span><span class="s2"> dokumen PDF ke TXT...</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Memulai proses konversi </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daftar_file_pdf</span><span class="p">)</span><span class="si">}</span><span class="s2"> dokumen PDF ke format TXT...</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Looping mengonversi setiap file PDF menjadi file TXT</span>
 <span class="k">for</span> <span class="n">file_pdf</span> <span class="ow">in</span> <span class="n">daftar_file_pdf</span><span class="p">:</span>
     <span class="n">path_asal</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_pdf</span><span class="p">,</span> <span class="n">file_pdf</span><span class="p">)</span>
     <span class="n">nama_txt</span> <span class="o">=</span> <span class="n">file_pdf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.pdf'</span><span class="p">,</span> <span class="s1">'.txt'</span><span class="p">)</span>
     <span class="n">path_tujuan</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_txt</span><span class="p">,</span> <span class="n">nama_txt</span><span class="p">)</span>
     
+    <span class="c1"># Panggil fungsi konversi</span>
     <span class="n">convert_pdf_to_txt</span><span class="p">(</span><span class="n">path_asal</span><span class="p">,</span> <span class="n">path_tujuan</span><span class="p">)</span>
+    
+    <span class="c1"># Hitung ukuran file hasil dalam Kilobyte (KB)</span>
     <span class="n">ukuran_kb</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">path_tujuan</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Berhasil Konversi] </span><span class="si">{</span><span class="n">file_pdf</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">nama_txt</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">ukuran_kb</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> KB)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Berhasil] </span><span class="si">{</span><span class="n">file_pdf</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">nama_txt</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">ukuran_kb</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> KB)"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!"</span><span class="p">)</span>
 </pre></div>
@@ -7959,13 +7935,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Memulai proses konversi 5 dokumen PDF ke TXT...
+<pre>Memulai proses konversi 5 dokumen PDF ke format TXT...
 
-[Berhasil Konversi] putusan_207_pid.sus_2022_pn_blt_20261001203703.pdf -&gt; putusan_207_pid.sus_2022_pn_blt_20261001203703.txt (75.46 KB)
-[Berhasil Konversi] putusan_313_pid.c_2020_pn_blt_20261001203239.pdf -&gt; putusan_313_pid.c_2020_pn_blt_20261001203239.txt (5.78 KB)
-[Berhasil Konversi] putusan_32_pid.b_2026_pn_blt_20261001202728.pdf -&gt; putusan_32_pid.b_2026_pn_blt_20261001202728.txt (44.51 KB)
-[Berhasil Konversi] putusan_34_pid.c_2026_pn_blt_20261001015134.pdf -&gt; putusan_34_pid.c_2026_pn_blt_20261001015134.txt (18.71 KB)
-[Berhasil Konversi] putusan_62_pid.b_2026_pn_blt_20261001014143.pdf -&gt; putusan_62_pid.b_2026_pn_blt_20261001014143.txt (68.28 KB)
+[Berhasil] putusan_207_pid.sus_2022_pn_blt_20261001203703.pdf -&gt; putusan_207_pid.sus_2022_pn_blt_20261001203703.txt (75.46 KB)
+[Berhasil] putusan_313_pid.c_2020_pn_blt_20261001203239.pdf -&gt; putusan_313_pid.c_2020_pn_blt_20261001203239.txt (5.78 KB)
+[Berhasil] putusan_32_pid.b_2026_pn_blt_20261001202728.pdf -&gt; putusan_32_pid.b_2026_pn_blt_20261001202728.txt (44.51 KB)
+[Berhasil] putusan_34_pid.c_2026_pn_blt_20261001015134.pdf -&gt; putusan_34_pid.c_2026_pn_blt_20261001015134.txt (18.71 KB)
+[Berhasil] putusan_62_pid.b_2026_pn_blt_20261001014143.pdf -&gt; putusan_62_pid.b_2026_pn_blt_20261001014143.txt (68.28 KB)
 
 Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
 </pre>
@@ -7974,50 +7950,49 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=acbb89b7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Implementasi-Mesin-Rule-Based-Information-Extraction-(Regex)">3. Implementasi Mesin Rule-Based Information Extraction (Regex)<a class="anchor-link" href="#3.-Implementasi-Mesin-Rule-Based-Information-Extraction-(Regex)">¶</a></h2><p>Di bawah ini adalah fungsi inti <code>generateEntity(pathFile, fileName)</code> yang mengimplementasikan aturan dan pola Regular Expression (<code>re</code>) untuk mengekstrak entitas-entitas perkara dari teks putusan pengadilan.</p>
-<h3 id="Aturan-Pola-yang-Diterapkan:">Aturan Pola yang Diterapkan:<a class="anchor-link" href="#Aturan-Pola-yang-Diterapkan:">¶</a></h3><ol>
-<li><strong>Nomor Putusan</strong>: Mencari pola standar penomoran registrasi perkara pengadilan, contoh: <code>62/Pid.B/2026/PN Blt</code>.</li>
-<li><strong>Identitas Terdakwa</strong>: Mengekstrak nama terdakwa dari bagian tabel identitas perkara (<code>Nama lengkap : [nama]</code>) maupun dakwaan alternatif.</li>
-<li><strong>Tuntutan Jaksa Penuntut Umum</strong>: Mengekstrak pasal KUHP/UU yang dituntutkan, jenis tindak pidana tuntutan, dan lama pidana penjara yang diminta jaksa.</li>
-<li><strong>Putusan / Vonis Majelis Hakim</strong>: Mengekstrak amar putusan pada bagian <code>MENGADILI</code>, mencakup tindak pidana yang terbukti secara sah dan meyakinkan, serta amar hukuman (penjara/kurungan/denda).</li>
-<li><strong>Aparatur Persidangan</strong>: Mengekstrak tanggal pembacaan putusan, Hakim Ketua, Hakim Anggota 1 &amp; 2, Panitera Pengganti, serta Jaksa Penuntut Umum pada bagian penutup (<em>Demikianlah diputuskan...</em>).</li>
-</ol>
+<h2 id="3.-Implementasi-Mesin-Rule-Based-Information-Extraction-(Regex)">3. Implementasi Mesin Rule-Based Information Extraction (Regex)<a class="anchor-link" href="#3.-Implementasi-Mesin-Rule-Based-Information-Extraction-(Regex)">¶</a></h2><p>Fungsi <code>generateEntity(folderData, fileName)</code> di bawah ini merupakan mesin ekstraksi informasi berbasis aturan (<em>Rule-Based IE</em>).
+Sistem membaca isi dokumen teks putusan, lalu mencocokkan pola teks (<em>pattern matching</em>) menggunakan modul <code>re</code> (Regular Expression) untuk mengekstrak 15 atribut entitas perkara pengadilan.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9d5c86b3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">clean_whitespace</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Membersihkan karakter spasi ganda, enter ganda, dan tabulasi liar."""</span>
+<span class="w">    </span><span class="sd">"""Fungsi pembantu untuk membersihkan spasi ganda, enter ganda, dan tabulasi."""</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">""</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[\r\n\t]+'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'\s+'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">generateEntity</span><span class="p">(</span><span class="n">folderData</span><span class="p">,</span> <span class="n">fileName</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Fungsi Rule-Based IE untuk mengekstrak 15 atribut entitas perkara dari teks putusan.</span>
-<span class="sd">    Output berupa dictionary berisi seluruh entitas yang diekstrak.</span>
+<span class="sd">    Fungsi Rule-Based IE untuk mengekstrak 15 atribut entitas dari file teks putusan.</span>
+<span class="sd">    Parameter:</span>
+<span class="sd">      - folderData : Path folder lokasi file TXT berada</span>
+<span class="sd">      - fileName   : Nama file TXT yang akan diekstrak</span>
+<span class="sd">    Return:</span>
+<span class="sd">      - Dictionary berisi 15 atribut entitas perkara</span>
 <span class="sd">    """</span>
     <span class="n">path_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folderData</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="n">hasil_entitas</span> <span class="o">=</span> <span class="p">{}</span>
-    
+
     <span class="c1"># =========================================================================</span>
     <span class="c1"># 1. ENTITAS: NOMOR PUTUSAN</span>
     <span class="c1"># Pola: [nomor urut]/[kode perkara: Pid.B / Pid.Sus / Pid.C]/[tahun]/PN Blt</span>
@@ -8028,7 +8003,7 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Nomor Putusan'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">m_nomor</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">m_nomor</span> <span class="k">else</span> <span class="s2">""</span>
 
     <span class="c1"># =========================================================================</span>
-    <span class="c1"># 2. ENTITAS: IDENTITAS TERDAKWA (Terdakwa 1, Terdakwa 2, Terdakwa 3)</span>
+    <span class="c1"># 2. ENTITAS: IDENTITAS TERDAKWA (Terdakwa 1, 2, 3)</span>
     <span class="c1"># Pola: Bagian tabel identitas perkara "Nama lengkap : [Nama Terdakwa]"</span>
     <span class="c1"># =========================================================================</span>
     <span class="n">list_terdakwa</span> <span class="o">=</span> <span class="p">[]</span>
@@ -8037,15 +8012,15 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
         <span class="n">nama_bersih</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">';.,'</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nama_bersih</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">nama_bersih</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">nama_bersih</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_terdakwa</span><span class="p">]:</span>
             <span class="n">list_terdakwa</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nama_bersih</span><span class="p">)</span>
-            
-    <span class="c1"># Pola cadangan jika tidak menggunakan format tabel standar</span>
+
+    <span class="c1"># Pola cadangan jika format tabel identitas tidak formal</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">list_terdakwa</span><span class="p">:</span>
         <span class="n">m_alt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'perkara\s+Terdakwa\s*[:\.]?\s*(?:1\.\s*)?([A-Z\s\.,]{3,50})(?:bin|binti|lahir|,|\n)'</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m_alt</span><span class="p">:</span>
             <span class="n">ct</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">';.,'</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">ct</span> <span class="ow">and</span> <span class="n">ct</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_terdakwa</span><span class="p">]:</span>
                 <span class="n">list_terdakwa</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span>
-                
+
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Nama Terdakwa 1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_terdakwa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_terdakwa</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Nama Terdakwa 2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_terdakwa</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_terdakwa</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Nama Terdakwa 3'</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_terdakwa</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_terdakwa</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s2">""</span>
@@ -8057,40 +8032,40 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tuntutan Pidana'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tuntutan KUHP'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tuntukan Hukuman'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
-    
+
     <span class="n">m_tuntutan_sec</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(?:tuntutan\s+pidana|menuntut\s+supaya|surat\s+tuntutan)(.*?)(?:M\s*E\s*N\s*G\s*A\s*D\s*I\s*L\s*I|Menimbang|MENGADILI)'</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="n">sec_tuntutan</span> <span class="o">=</span> <span class="n">m_tuntutan_sec</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">m_tuntutan_sec</span> <span class="k">else</span> <span class="n">text</span>
-    
-    <span class="c1"># a. Tindak Pidana Tuntutan</span>
+
+    <span class="c1"># a. Tindak Pidana yang Dituntutkan</span>
     <span class="n">m_tp_tuntutan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'bersalah\s+melakukan\s+tindak\s+pidana\s+["“</span><span class="se">\'</span><span class="s1">]?([^"”</span><span class="se">\'</span><span class="s1">;\n\r]+)["”</span><span class="se">\'</span><span class="s1">]?'</span><span class="p">,</span> <span class="n">sec_tuntutan</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">m_tp_tuntutan</span><span class="p">:</span>
         <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tuntutan Pidana'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">m_tp_tuntutan</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">';.,'</span><span class="p">)</span>
-        
-    <span class="c1"># b. Pasal KUHP / Undang-Undang yang Dituntutkan</span>
+
+    <span class="c1"># b. Pasal KUHP / UU yang Dituntutkan</span>
     <span class="n">m_kuhp_tuntutan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'((?:Pasal\s+[\d\w\s\(\)]+)\s+(?:KUHP|KUHPidana|UU\s+[\d\w\s/]+|UURI\s+[\d\w\s/]+))'</span><span class="p">,</span> <span class="n">sec_tuntutan</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">m_kuhp_tuntutan</span><span class="p">:</span>
         <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tuntutan KUHP'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">m_kuhp_tuntutan</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
-    <span class="c1"># c. Lama Tuntutan Hukuman Penjara</span>
+    <span class="c1"># c. Lama Hukuman Penjara yang Diminta Jaksa</span>
     <span class="n">m_huk_tuntutan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(?:pidana\s+penjara\s+selama|penjara\s+selama|berupa\s+pidana\s+penjara\s+selama)\s+([0-9\(\)\w\s]+?)(?:dikurangi|dengan|denda|menetapkan|;|\.|$)'</span><span class="p">,</span> <span class="n">sec_tuntutan</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">m_huk_tuntutan</span><span class="p">:</span>
         <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tuntukan Hukuman'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">m_huk_tuntutan</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">';.,'</span><span class="p">)</span>
 
     <span class="c1"># =========================================================================</span>
     <span class="c1"># 4. ENTITAS: PUTUSAN / VONIS MAJELIS HAKIM (AMAR PUTUSAN)</span>
-    <span class="c1"># Mengambil bagian amar putusan setelah kata 'M E N G A D I L I :'</span>
+    <span class="c1"># Mengambil bagian amar putusan setelah teks 'M E N G A D I L I :'</span>
     <span class="c1"># =========================================================================</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Putusan Pidana'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Putusan Hukuman'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
-    
+
     <span class="n">m_mengadili_sec</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(?:M\s*E\s*N\s*G\s*A\s*D\s*I\s*L\s*I|MENGADILI)\s*:(.*?)(?:Demikianlah\s+diputuskan|Demikian\s+diputuskan|$)'</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="n">sec_putusan</span> <span class="o">=</span> <span class="n">m_mengadili_sec</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">m_mengadili_sec</span> <span class="k">else</span> <span class="n">text</span>
-    
+
     <span class="c1"># a. Tindak Pidana Putusan yang Terbukti</span>
     <span class="n">m_tp_putusan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(?:bersalah\s+melakukan\s+tindak\s+pidana|melakukan\s+tindak\s+pidana)\s+["“</span><span class="se">\'</span><span class="s1">]?([^"”</span><span class="se">\'</span><span class="s1">;\n\r]+)["”</span><span class="se">\'</span><span class="s1">]?'</span><span class="p">,</span> <span class="n">sec_putusan</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">m_tp_putusan</span><span class="p">:</span>
         <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Putusan Pidana'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">m_tp_putusan</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">';.,?'</span><span class="p">)</span>
-        
+
     <span class="c1"># b. Amar Vonis Hukuman (Penjara, Kurungan, atau Denda)</span>
     <span class="n">m_huk_putusan</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(?:pidana\s+penjara\s+selama|pidana\s+kurungan\s+selama|penjara\s+selama|kurungan\s+selama|pidana\s+denda\s+sejumlah|denda\s+sejumlah)\s+([^;\.\n\r]+)'</span><span class="p">,</span> <span class="n">sec_putusan</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">m_huk_putusan</span><span class="p">:</span>
@@ -8106,20 +8081,19 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Hakim Anggota2'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Panitera'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Penuntut Umum'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span>
-    
+
     <span class="n">m_penutup</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(?:Demikianlah\s+diputuskan|Demikian\s+diputuskan)(.*)'</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="n">sec_penutup</span> <span class="o">=</span> <span class="n">m_penutup</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">m_penutup</span> <span class="k">else</span> <span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="mi">1800</span><span class="p">:]</span>
     <span class="n">sec_penutup_clean</span> <span class="o">=</span> <span class="n">clean_whitespace</span><span class="p">(</span><span class="n">sec_penutup</span><span class="p">)</span>
-    
+
     <span class="c1"># a. Tanggal Pembacaan Putusan</span>
     <span class="n">m_tgl</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'tanggal\s+([0-9]+\s+[A-Za-z]+\s+[0-9]</span><span class="si">{4}</span><span class="s1">)'</span><span class="p">,</span> <span class="n">sec_penutup_clean</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">m_tgl</span><span class="p">:</span>
         <span class="n">hasil_entitas</span><span class="p">[</span><span class="s1">'Tanggal Putusan'</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_tgl</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        
+
     <span class="c1"># b. Hakim Ketua (Majelis) atau Hakim Tunggal</span>
     <span class="n">m_hk</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'oleh\s+(?:kami,\s*)?([A-Za-z\s\.,]+?)\s*,\s*sebagai\s+Hakim\s+Ketua'</span><span class="p">,</span> <span class="n">sec_penutup_clean</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">m_hk</span><span class="p">:</span>
-        <span class="c1"># Format persidangan catatan cepat (Tipiring/Hakim Tunggal)</span>
         <span class="n">m_hk</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'([A-Z\s\.,]{5,50})\s*:\s*Hakim;'</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">m_hk</span><span class="p">:</span>
         <span class="n">m_hk</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'oleh\s+([A-Za-z\s\.,]+?)\s*,\s*S?\.?H?\.?\s*(?:selaku\s+)?Hakim'</span><span class="p">,</span> <span class="n">sec_penutup_clean</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
@@ -8159,6 +8133,7 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
 
     <span class="k">return</span> <span class="n">hasil_entitas</span>
 
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Fungsi generateEntity berhasil didefinisikan dan siap digunakan!"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8179,89 +8154,68 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0b8ce9da">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Fungsi-Penyimpanan-Output-(Individual-TXT-&amp;-CSV-Terstruktur)">4. Fungsi Penyimpanan Output (Individual TXT &amp; CSV Terstruktur)<a class="anchor-link" href="#4.-Fungsi-Penyimpanan-Output-(Individual-TXT-&amp;-CSV-Terstruktur)">¶</a></h2><p>Dua fungsi pembantu disiapkan:</p>
+<h2 id="4.-Fungsi-Penyimpanan-Output-(File-Teks-Individual-&amp;-Rekap-CSV)">4. Fungsi Penyimpanan Output (File Teks Individual &amp; Rekap CSV)<a class="anchor-link" href="#4.-Fungsi-Penyimpanan-Output-(File-Teks-Individual-&amp;-Rekap-CSV)">¶</a></h2><p>Sesuai instruksi tugas, hasil ekstraksi entitas harus disimpan dalam dua bentuk:</p>
 <ol>
-<li><code>save_individual_output</code>: Menyimpan hasil ekstraksi entitas setiap dokumen putusan ke dalam file teks individual di folder <code>./OUTPUT/O-[namafile].txt</code>.</li>
-<li><code>save_to_csv</code>: Menyimpan seluruh kumpulan entitas putusan ke dalam file tabel <code>courtHistory.csv</code> sesuai format yang diinstruksikan oleh dosen.</li>
+<li><strong>File Teks Individual (<code>OUTPUT/O-[namafile].txt</code>)</strong>: Menyimpan 15 atribut entitas per dokumen putusan.</li>
+<li><strong>File CSV Rekapitulasi (<code>courtHistory.csv</code>)</strong>: Menggabungkan seluruh hasil ekstraksi ke dalam satu tabel CSV terstruktur dengan 15 kolom entitas.</li>
 </ol>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a63d8521">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">save_individual_output</span><span class="p">(</span><span class="n">entity_dict</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Menyimpan hasil ekstraksi entitas untuk satu file putusan ke file teks individual O-[namafile].txt</span>
+<span class="sd">    Fungsi untuk menyimpan hasil ekstraksi satu putusan ke file teks O-[namafile].txt di folder OUTPUT/.</span>
 <span class="sd">    """</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">nama_file_output</span> <span class="o">=</span> <span class="s2">"O-"</span> <span class="o">+</span> <span class="n">file_name</span>
-    <span class="n">path_output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="n">nama_file_output</span><span class="p">)</span>
+    <span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"O-</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">)</span>
     
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_output</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">65</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"HASIL EKSTRAKSI INFORMASI RULE-BASED (PENGADILAN NEGERI BLITAR)</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dokumen Asal: </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">65</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
-        
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nomor Putusan   : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Nomor Putusan'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
-        
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"--- IDENTITAS TERDAKWA ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nama Terdakwa 1 : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Nama Terdakwa 1'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nama Terdakwa 2 : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Nama Terdakwa 2'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nama Terdakwa 3 : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Nama Terdakwa 3'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
-        
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"--- TUNTUTAN JAKSA PENUNTUT UMUM ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tindak Pidana   : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Tuntutan Pidana'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Melanggar Pasal : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Tuntutan KUHP'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tuntutan Hukuman: </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Tuntukan Hukuman'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
-        
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"--- PUTUSAN / VONIS MAJELIS HAKIM ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tindak Pidana   : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Putusan Pidana'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Amar Putusan    : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Putusan Hukuman'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
-        
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"--- APARATUR PERSIDANGAN ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tanggal Putusan : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Tanggal Putusan'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hakim Ketua     : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Hakim Ketua'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hakim Anggota 1 : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Hakim Anggota1'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hakim Anggota 2 : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Hakim Anggota2'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Panitera        : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Panitera'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Penuntut Umum   : </span><span class="si">{</span><span class="n">entity_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Penuntut Umum'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">65</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">path_output</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"HASIL EKSTRAKSI ENTITAS: </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">entity_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">output_path</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">save_to_csv</span><span class="p">(</span><span class="n">list_entities</span><span class="p">,</span> <span class="n">csv_path</span><span class="p">):</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_to_csv</span><span class="p">(</span><span class="n">list_entities</span><span class="p">,</span> <span class="n">csv_path</span><span class="o">=</span><span class="s2">"courtHistory.csv"</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Menyimpan list entitas seluruh putusan ke file CSV berformat tabel.</span>
+<span class="sd">    Fungsi untuk menyimpan seluruh rekapitulasi entitas putusan ke dalam file CSV.</span>
+<span class="sd">    Header kolom disesuaikan dengan spesifikasi tugas ekstraksi informasi.</span>
 <span class="sd">    """</span>
-    <span class="n">header_kolom</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s1">'Nomor Putusan'</span><span class="p">,</span> <span class="s1">'Nama Terdakwa 1'</span><span class="p">,</span> <span class="s1">'Nama Terdakwa 2'</span><span class="p">,</span> <span class="s1">'Nama Terdakwa 3'</span><span class="p">,</span>
-        <span class="s1">'Tuntutan Pidana'</span><span class="p">,</span> <span class="s1">'Tuntutan KUHP'</span><span class="p">,</span> <span class="s1">'Tuntukan Hukuman'</span><span class="p">,</span> <span class="s1">'Putusan Pidana'</span><span class="p">,</span>
-        <span class="s1">'Putusan Hukuman'</span><span class="p">,</span> <span class="s1">'Tanggal Putusan'</span><span class="p">,</span> <span class="s1">'Hakim Ketua'</span><span class="p">,</span> <span class="s1">'Hakim Anggota1'</span><span class="p">,</span>
-        <span class="s1">'Hakim Anggota2'</span><span class="p">,</span> <span class="s1">'Panitera'</span><span class="p">,</span> <span class="s1">'Penuntut Umum'</span>
+        <span class="s1">'Tuntutan Pidana'</span><span class="p">,</span> <span class="s1">'Tuntutan KUHP'</span><span class="p">,</span> <span class="s1">'Tuntukan Hukuman'</span><span class="p">,</span>
+        <span class="s1">'Putusan Pidana'</span><span class="p">,</span> <span class="s1">'Putusan Hukuman'</span><span class="p">,</span> <span class="s1">'Tanggal Putusan'</span><span class="p">,</span>
+        <span class="s1">'Hakim Ketua'</span><span class="p">,</span> <span class="s1">'Hakim Anggota1'</span><span class="p">,</span> <span class="s1">'Hakim Anggota2'</span><span class="p">,</span>
+        <span class="s1">'Panitera'</span><span class="p">,</span> <span class="s1">'Penuntut Umum'</span>
     <span class="p">]</span>
     
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">header_kolom</span><span class="p">)</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
         <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">list_entities</span><span class="p">:</span>
-            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">list_entities</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
             
     <span class="k">return</span> <span class="n">csv_path</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Fungsi penyimpanan output teks dan CSV berhasil dibuat!"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fungsi penyimpanan output (TXT &amp; CSV) siap digunakan!"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8274,64 +8228,67 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Fungsi penyimpanan output teks dan CSV berhasil dibuat!
+<pre>Fungsi penyimpanan output (TXT &amp; CSV) siap digunakan!
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0ba1253f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Eksekusi-Ekstraksi-pada-5-Dokumen-Putusan-PN-Blitar">5. Eksekusi Ekstraksi pada 5 Dokumen Putusan PN Blitar<a class="anchor-link" href="#5.-Eksekusi-Ekstraksi-pada-5-Dokumen-Putusan-PN-Blitar">¶</a></h2><p>Pada tahap ini, script membaca seluruh file dokumen teks yang telah dikonversi di <code>./INPUT_TXT/</code>, menjalankan fungsi <code>generateEntity()</code>, mencetak hasil ekstraksi ke layar, dan menyimpan hasilnya ke file teks perorangan di <code>./OUTPUT/</code> serta ke file CSV <code>courtHistory.csv</code>.</p>
+<h2 id="5.-Eksekusi-Batch-Ekstraksi-Informasi-dari-5-Berkas-Putusan-PN-Blitar">5. Eksekusi Batch Ekstraksi Informasi dari 5 Berkas Putusan PN Blitar<a class="anchor-link" href="#5.-Eksekusi-Batch-Ekstraksi-Informasi-dari-5-Berkas-Putusan-PN-Blitar">¶</a></h2><p>Pada tahap ini, sistem akan:</p>
+<ol>
+<li>Membaca seluruh file <code>.txt</code> yang berada di direktori <code>INPUT_TXT/</code>.</li>
+<li>Menjalankan fungsi <code>generateEntity()</code> untuk mengekstrak 15 entitas dari masing-masing berkas.</li>
+<li>Menyimpan file individual ke folder <code>OUTPUT/O-[namafile].txt</code>.</li>
+<li>Mengompilasi seluruh entitas ke dalam list dan menyimpannya ke <code>courtHistory.csv</code>.</li>
+</ol>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f95ab4c3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Konfigurasi folder dan file output</span>
-<span class="n">start_path</span> <span class="o">=</span> <span class="s2">"./INPUT_TXT/"</span>
-<span class="n">hasil_path</span> <span class="o">=</span> <span class="s2">"./OUTPUT/"</span>
-<span class="n">csv_output</span> <span class="o">=</span> <span class="s2">"courtHistory.csv"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">folder_input_txt</span> <span class="o">=</span> <span class="s2">"./INPUT_TXT/"</span>
+<span class="n">folder_output</span> <span class="o">=</span> <span class="s2">"./OUTPUT/"</span>
+<span class="n">csv_file_path</span> <span class="o">=</span> <span class="s2">"courtHistory.csv"</span>
 
-<span class="c1"># Ambil daftar file teks hasil konversi PDF putusan PN Blitar</span>
-<span class="n">daftar_file</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">start_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.txt'</span><span class="p">)])</span>
+<span class="c1"># Mengambil daftar file TXT yang tersedia</span>
+<span class="n">daftar_file_txt</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_input_txt</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">'.txt'</span><span class="p">)])</span>
+
 <span class="n">list_semua_hasil</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Memulai proses ekstraksi informasi dari </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daftar_file</span><span class="p">)</span><span class="si">}</span><span class="s2"> dokumen putusan...</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Memulai proses ekstraksi informasi dari </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daftar_file_txt</span><span class="p">)</span><span class="si">}</span><span class="s2"> berkas putusan PN Blitar...</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tiap_file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daftar_file</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"================================================================="</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DOKUMEN [</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daftar_file</span><span class="p">)</span><span class="si">}</span><span class="s2">]: </span><span class="si">{</span><span class="n">tiap_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"================================================================="</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">nama_file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daftar_file_txt</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">daftar_file_txt</span><span class="p">)</span><span class="si">}</span><span class="s2">] Mengekstrak file: </span><span class="si">{</span><span class="n">nama_file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
-    <span class="c1"># Ekstraksi entitas menggunakan rule-based engine</span>
-    <span class="n">hasil_ekstraksi</span> <span class="o">=</span> <span class="n">generateEntity</span><span class="p">(</span><span class="n">start_path</span><span class="p">,</span> <span class="n">tiap_file</span><span class="p">)</span>
-    <span class="n">list_semua_hasil</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hasil_ekstraksi</span><span class="p">)</span>
+    <span class="c1"># 1. Jalankan Rule-Based IE</span>
+    <span class="n">entitas</span> <span class="o">=</span> <span class="n">generateEntity</span><span class="p">(</span><span class="n">folder_input_txt</span><span class="p">,</span> <span class="n">nama_file</span><span class="p">)</span>
+    <span class="n">list_semua_hasil</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entitas</span><span class="p">)</span>
     
-    <span class="c1"># Tampilkan atribut entitas yang berhasil diperoleh</span>
-    <span class="k">for</span> <span class="n">atribut</span><span class="p">,</span> <span class="n">nilai</span> <span class="ow">in</span> <span class="n">hasil_ekstraksi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">atribut</span><span class="si">:</span><span class="s2">18</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">nilai</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        
-    <span class="c1"># Simpan hasil ekstraksi individu ke folder OUTPUT/O-[namafile].txt</span>
-    <span class="n">file_simpan</span> <span class="o">=</span> <span class="n">save_individual_output</span><span class="p">(</span><span class="n">hasil_ekstraksi</span><span class="p">,</span> <span class="n">hasil_path</span><span class="p">,</span> <span class="n">tiap_file</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"-&gt; File tersimpan: </span><span class="si">{</span><span class="n">file_simpan</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="c1"># 2. Simpan file individual O-[namafile].txt</span>
+    <span class="n">path_txt_out</span> <span class="o">=</span> <span class="n">save_individual_output</span><span class="p">(</span><span class="n">entitas</span><span class="p">,</span> <span class="n">folder_output</span><span class="p">,</span> <span class="n">nama_file</span><span class="p">)</span>
+    
+    <span class="c1"># Tampilkan ringkasan singkat di console</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   -&gt; Nomor Putusan  : </span><span class="si">{</span><span class="n">entitas</span><span class="p">[</span><span class="s1">'Nomor Putusan'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   -&gt; Terdakwa 1     : </span><span class="si">{</span><span class="n">entitas</span><span class="p">[</span><span class="s1">'Nama Terdakwa 1'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   -&gt; Putusan Hukuman: </span><span class="si">{</span><span class="n">entitas</span><span class="p">[</span><span class="s1">'Putusan Hukuman'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   -&gt; Disimpan di    : </span><span class="si">{</span><span class="n">path_txt_out</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="c1"># Simpan seluruh data entitas ke file CSV tabel</span>
-<span class="n">save_to_csv</span><span class="p">(</span><span class="n">list_semua_hasil</span><span class="p">,</span> <span class="n">csv_output</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"================================================================="</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PROSES SELESAI! Seluruh entitas berhasil diekspor ke: </span><span class="si">{</span><span class="n">csv_output</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"================================================================="</span><span class="p">)</span>
+<span class="c1"># 3. Simpan seluruh data ke file CSV rekapitulasi</span>
+<span class="n">save_to_csv</span><span class="p">(</span><span class="n">list_semua_hasil</span><span class="p">,</span> <span class="n">csv_file_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ekstraksi selesai! Rekapitulasi berhasil disimpan di '</span><span class="si">{</span><span class="n">csv_file_path</span><span class="si">}</span><span class="s2">'."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8344,155 +8301,73 @@ Seluruh dokumen putusan berhasil dikonversi ke format teks TXT!
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Memulai proses ekstraksi informasi dari 5 dokumen putusan...
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-=================================================================
-DOKUMEN [1/5]: putusan_207_pid.sus_2022_pn_blt_20261001203703.txt
-=================================================================
-Nomor Putusan      : 207/Pid.Sus/2022/PN Blt
-Nama Terdakwa 1    : Kateni Bin Alm Jaimin
-Nama Terdakwa 2    : 
-Nama Terdakwa 3    : 
-Tuntutan Pidana    : menganiaya dan/atau
-Tuntutan KUHP      : Pasal 91 B ayat (1) jo Pasal 66 A ayat (1) UU RI No
-Tuntukan Hukuman   : 4 (empat) Bulan dan
-Putusan Pidana     : PENGANIAYAAN
-Putusan Hukuman    : 4 (empat) Bulan dan denda sebesar Rp 3
-Tanggal Putusan    : 29 Agustus 2022
-Hakim Ketua        : Dr. Wisnu Widiastuti, S.H.,, M.H.um
-Hakim Anggota1     : Sugiri Wiryandono, S.H., M.Hum
-Hakim Anggota2     : Doni Prianto, S.H
-Panitera           : Sutris Utami, S.H
-Penuntut Umum      : Bambang Suparyanto.,S.H
--&gt; File tersimpan: ./OUTPUT/O-putusan_207_pid.sus_2022_pn_blt_20261001203703.txt
+<pre>Memulai proses ekstraksi informasi dari 5 berkas putusan PN Blitar...
 
-=================================================================
-DOKUMEN [2/5]: putusan_313_pid.c_2020_pn_blt_20261001203239.txt
-=================================================================
-Nomor Putusan      : 313/Pid.C/2020/PN Blt
-Nama Terdakwa 1    : Suwito
-Nama Terdakwa 2    : 
-Nama Terdakwa 3    : 
-Tuntutan Pidana    : mabuk ditempat umum dan mengganggu
-Tuntutan KUHP      : Pasal 492 Ayat 1 KUHP
-Tuntukan Hukuman   : 
-Putusan Pidana     : mabuk ditempat umum dan mengganggu
-Putusan Hukuman    : 5 (lima) hari
-Tanggal Putusan    : 14 Pebruari 2020
-Hakim Ketua        : SUCI ASTRI PRAMAWATI, S.H., M.HUM
-Hakim Anggota1     : 
-Hakim Anggota2     : 
-Panitera           : SUTRIS UTAMI, S.H
-Penuntut Umum      : 
--&gt; File tersimpan: ./OUTPUT/O-putusan_313_pid.c_2020_pn_blt_20261001203239.txt
+[1/5] Mengekstrak file: putusan_207_pid.sus_2022_pn_blt_20261001203703.txt
+   -&gt; Nomor Putusan  : 207/Pid.Sus/2022/PN Blt
+   -&gt; Terdakwa 1     : Kateni Bin Alm Jaimin
+   -&gt; Putusan Hukuman: 4 (empat) Bulan dan denda sebesar Rp 3
+   -&gt; Disimpan di    : ./OUTPUT/O-putusan_207_pid.sus_2022_pn_blt_20261001203703.txt
 
-=================================================================
-DOKUMEN [3/5]: putusan_32_pid.b_2026_pn_blt_20261001202728.txt
-=================================================================
-Nomor Putusan      : 32/Pid.B/2026/PN Blt
-Nama Terdakwa 1    : Sholikhin Alias Likok Bin Ginar
-Nama Terdakwa 2    : 
-Nama Terdakwa 3    : 
-Tuntutan Pidana    : melakukan penganiayaan
-Tuntutan KUHP      : 
-Tuntukan Hukuman   : 10 (sepuluh) bulan
-Putusan Pidana     : melakukan
-Putusan Hukuman    : 10 (sepuluh) bulan
-Tanggal Putusan    : 16 April 2026
-Hakim Ketua        : Agus Darmanto, S.H., M.H
-Hakim Anggota1     : Raden Rajendra Mohni Iswoyokusumo, S.H., M.H
-Hakim Anggota2     : Abraham Yoseph Titapasanea, S.H., M.H
-Panitera           : H. Mukhayani, S.H., M.H
-Penuntut Umum      : Ainur Rofiq, S.H
--&gt; File tersimpan: ./OUTPUT/O-putusan_32_pid.b_2026_pn_blt_20261001202728.txt
+[2/5] Mengekstrak file: putusan_313_pid.c_2020_pn_blt_20261001203239.txt
+   -&gt; Nomor Putusan  : 313/Pid.C/2020/PN Blt
+   -&gt; Terdakwa 1     : Suwito
+   -&gt; Putusan Hukuman: 5 (lima) hari
+   -&gt; Disimpan di    : ./OUTPUT/O-putusan_313_pid.c_2020_pn_blt_20261001203239.txt
 
-=================================================================
-DOKUMEN [4/5]: putusan_34_pid.c_2026_pn_blt_20261001015134.txt
-=================================================================
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Nomor Putusan      : 34/Pid.C/2026/PN Blt
-Nama Terdakwa 1    : LANANG TRI ARDIANSYAH
-Nama Terdakwa 2    : 
-Nama Terdakwa 3    : 
-Tuntutan Pidana    : mabuk di
-Tuntutan KUHP      : Pasal 316 KUHP
-Tuntukan Hukuman   : 
-Putusan Pidana     : mabuk di
-Putusan Hukuman    : Rp200
-Tanggal Putusan    : 24 April 2026
-Hakim Ketua        : Taufiq Noor Hayat, S.H
-Hakim Anggota1     : 
-Hakim Anggota2     : 
-Panitera           : Gita Permana Santoso, S.Kom., S.H
-Penuntut Umum      : 
--&gt; File tersimpan: ./OUTPUT/O-putusan_34_pid.c_2026_pn_blt_20261001015134.txt
+[3/5] Mengekstrak file: putusan_32_pid.b_2026_pn_blt_20261001202728.txt
+   -&gt; Nomor Putusan  : 32/Pid.B/2026/PN Blt
+   -&gt; Terdakwa 1     : Sholikhin Alias Likok Bin Ginar
+   -&gt; Putusan Hukuman: 10 (sepuluh) bulan
+   -&gt; Disimpan di    : ./OUTPUT/O-putusan_32_pid.b_2026_pn_blt_20261001202728.txt
 
-=================================================================
-DOKUMEN [5/5]: putusan_62_pid.b_2026_pn_blt_20261001014143.txt
-=================================================================
-Nomor Putusan      : 62/Pid.B/2026/PN Blt
-Nama Terdakwa 1    : Irwanto
-Nama Terdakwa 2    : 
-Nama Terdakwa 3    : 
-Tuntutan Pidana    : pencurian dalam keadaan memberatkan
-Tuntutan KUHP      : Pasal 477 ayat (1) huruf g KUHP
-Tuntukan Hukuman   : 3 (Tiga) Tahun dan 6 (Enam) Bulan3 (tiga) Tahun dan 6 (enam) 3
-Putusan Pidana     : pencurian dalam keadaan yang
-Putusan Hukuman    : 3 (tiga) tahun
-Tanggal Putusan    : 15 April 2026
-Hakim Ketua        : Agus Darmanto, S.H., M.H
-Hakim Anggota1     : Raden Rajendra Mohni Iswoyokusumo, S.H., M.H
-Hakim Anggota2     : Abraham Yoseph Titapasanea, S.H., M.H
-Panitera           : Sukri Safar, S.H
-Penuntut Umum      : Dwi Budi Setiari, S.H., M.H
--&gt; File tersimpan: ./OUTPUT/O-putusan_62_pid.b_2026_pn_blt_20261001014143.txt
+[4/5] Mengekstrak file: putusan_34_pid.c_2026_pn_blt_20261001015134.txt
+   -&gt; Nomor Putusan  : 34/Pid.C/2026/PN Blt
+   -&gt; Terdakwa 1     : LANANG TRI ARDIANSYAH
+   -&gt; Putusan Hukuman: Rp200
+   -&gt; Disimpan di    : ./OUTPUT/O-putusan_34_pid.c_2026_pn_blt_20261001015134.txt
 
-=================================================================
-PROSES SELESAI! Seluruh entitas berhasil diekspor ke: courtHistory.csv
-=================================================================
+[5/5] Mengekstrak file: putusan_62_pid.b_2026_pn_blt_20261001014143.txt
+   -&gt; Nomor Putusan  : 62/Pid.B/2026/PN Blt
+   -&gt; Terdakwa 1     : Irwanto
+   -&gt; Putusan Hukuman: 3 (tiga) tahun
+   -&gt; Disimpan di    : ./OUTPUT/O-putusan_62_pid.b_2026_pn_blt_20261001014143.txt
+
+Ekstraksi selesai! Rekapitulasi berhasil disimpan di 'courtHistory.csv'.
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f3469858">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Verifikasi-&amp;-Tampilan-Tabel-DataFrame-Hasil-Ekstraksi">6. Verifikasi &amp; Tampilan Tabel DataFrame Hasil Ekstraksi<a class="anchor-link" href="#6.-Verifikasi-&amp;-Tampilan-Tabel-DataFrame-Hasil-Ekstraksi">¶</a></h2><p>Di bawah ini disajikan tabel DataFrame dari file <code>courtHistory.csv</code> menggunakan <code>pandas</code> untuk memverifikasi kelengkapan seluruh atribut entitas dari ke-5 dokumen putusan perkara Pengadilan Negeri Blitar.</p>
+<h2 id="6.-Verifikasi-dan-Tampilan-Tabel-Rekapitulasi-Data-(Pandas)">6. Verifikasi dan Tampilan Tabel Rekapitulasi Data (Pandas)<a class="anchor-link" href="#6.-Verifikasi-dan-Tampilan-Tabel-Rekapitulasi-Data-(Pandas)">¶</a></h2><p>Tabel berikut menampilkan isi file <code>courtHistory.csv</code> yang memuat ke-15 atribut entitas dari 5 putusan Pengadilan Negeri Blitar yang telah diekstrak menggunakan mesin <em>Rule-Based IE</em>.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=27553844">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Baca file CSV hasil ekstraksi menggunakan pandas</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Membaca file courtHistory.csv ke dalam DataFrame Pandas</span>
 <span class="n">df_hasil</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"courtHistory.csv"</span><span class="p">)</span>
 
-<span class="c1"># Atur opsi tampilan pandas agar kolom terbaca dengan jelas</span>
+<span class="c1"># Mengatur konfigurasi tampilan pandas agar seluruh kolom terlihat jelas</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_colwidth'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.width'</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
-<span class="c1"># Tampilkan 5 baris data hasil ekstraksi</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total Dokumen Putusan yang Berhasil Diekstrak: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_hasil</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan tabel hasil ekstraksi</span>
 <span class="n">df_hasil</span>
 </pre></div>
 </div>
@@ -8503,8 +8378,16 @@ PROSES SELESAI! Seluruh entitas berhasil diekspor ke: courtHistory.csv
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Total Dokumen Putusan yang Berhasil Diekstrak: 5
+
+</pre>
+</div>
+</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8549,7 +8432,7 @@ PROSES SELESAI! Seluruh entitas berhasil diekspor ke: courtHistory.csv
 <td>NaN</td>
 <td>NaN</td>
 <td>menganiaya dan/atau</td>
-<td>Pasal 91 B ayat (1) jo Pasal 66 A ayat (1) UU RI No</td>
+<td>Pasal 91 B ayat (1) jo Pasal 66 A ayat (1) UU ...</td>
 <td>4 (empat) Bulan dan</td>
 <td>PENGANIAYAAN</td>
 <td>4 (empat) Bulan dan denda sebesar Rp 3</td>
@@ -8622,7 +8505,7 @@ PROSES SELESAI! Seluruh entitas berhasil diekspor ke: courtHistory.csv
 <td>NaN</td>
 <td>pencurian dalam keadaan memberatkan</td>
 <td>Pasal 477 ayat (1) huruf g KUHP</td>
-<td>3 (Tiga) Tahun dan 6 (Enam) Bulan3 (tiga) Tahun dan 6 (enam) 3</td>
+<td>3 (Tiga) Tahun dan 6 (Enam) Bulan3 (tiga) Tahu...</td>
 <td>pencurian dalam keadaan yang</td>
 <td>3 (tiga) tahun</td>
 <td>15 April 2026</td>
@@ -8640,17 +8523,30 @@ PROSES SELESAI! Seluruh entitas berhasil diekspor ke: courtHistory.csv
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d1964a9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="7.-Kesimpulan-dan-Analisis-Hasil">7. Kesimpulan dan Analisis Hasil<a class="anchor-link" href="#7.-Kesimpulan-dan-Analisis-Hasil">¶</a></h2><p>Berdasarkan hasil uji coba Rule-Based Information Extraction pada dokumen putusan Pengadilan Negeri Blitar:</p>
+<h2 id="7.-Kesimpulan-dan-Analisis-Evaluasi">7. Kesimpulan dan Analisis Evaluasi<a class="anchor-link" href="#7.-Kesimpulan-dan-Analisis-Evaluasi">¶</a></h2><p>Berdasarkan hasil uji coba sistem <em>Rule-Based Information Extraction</em> pada 5 berkas putusan Pengadilan Negeri Blitar, dapat ditarik beberapa poin kesimpulan dan analisis:</p>
 <ol>
-<li><strong>Tingkat Akurasi Pola</strong>: Pola Regular Expression (<code>re</code>) yang dirancang berhasil mengekstrak entitas penting seperti <strong>Nomor Putusan</strong>, <strong>Nama Terdakwa</strong>, <strong>Amar Vonis/Hukuman</strong>, <strong>Tanggal Putusan</strong>, dan <strong>Aparatur Pengadilan (Hakim &amp; Panitera)</strong> secara konsisten.</li>
-<li><strong>Karakteristik Dokumen Putusan</strong>: Format dokumen putusan pidana biasa (<em>Pid.B</em>) dan pidana khusus (<em>Pid.Sus</em>) memiliki kelengkapan entitas penuh (Majelis Hakim lengkap dengan 3 hakim, Jaksa Penuntut Umum, serta berkas tuntutan dan putusan). Sementara pada perkara tindak pidana cepat/ringan (<em>Pid.C</em>), persidangan dipimpin oleh Hakim Tunggal dengan format catatan cepat.</li>
-<li><strong>Keunggulan Sistem Rule-Based</strong>: Pendekatan rule-based sangat andal untuk dokumen hukum yang memiliki struktur formal berpola tetap (<em>domain-specific text</em>), dengan kecepatan komputasi yang sangat cepat tanpa memerlukan inferensi model AI yang berat.</li>
+<li><p><strong>Efektivitas Pendekatan Rule-Based (Regex):</strong></p>
+<ul>
+<li>Pendekatan berbasis aturan (<em>pattern matching</em>) dengan <em>Regular Expression</em> terbukti sangat cepat dan efektif untuk mengekstrak informasi pada dokumen legal yang memiliki struktur baku, seperti nomor perkara, identitas terdakwa pada tabel identitas, dan susunan aparatur pengadilan (Hakim, Panitera, Penuntut Umum).</li>
+</ul>
+</li>
+<li><p><strong>Karakteristik dan Variasi Dokumen Putusan:</strong></p>
+<ul>
+<li><strong>Perkara Pidana Biasa (Pid.B) &amp; Pidana Khusus (Pid.Sus):</strong> Memiliki struktur persidangan lengkap (Majelis Hakim terdiri dari 1 Hakim Ketua dan 2 Hakim Anggota, dihadiri Jaksa Penuntut Umum, serta terdapat surat tuntutan dan amar vonis).</li>
+<li><strong>Perkara Tindak Pidana Ringan / Cepat (Pid.C / Tipiring):</strong> Disidangkan oleh <strong>Hakim Tunggal</strong> tanpa kehadiran Jaksa Penuntut Umum dan tanpa pembacaan surat tuntutan formal. Aturan regex yang dirancang telah berhasil menangani kondisi ini tanpa mengalami <em>error/crash</em>.</li>
+</ul>
+</li>
+<li><p><strong>Tantangan Format Teks:</strong></p>
+<ul>
+<li>Pemotongan baris (<em>line wrap</em>) dan spasi tidak beraturan pada hasil konversi PDF ke teks merupakan tantangan utama. Penggunaan fungsi <code>clean_whitespace()</code> dan <em>null-safe regex</em> berhasil mencegah kegagalan ekstraksi teks.</li>
+</ul>
+</li>
 </ol>
 </div>
 </div>
